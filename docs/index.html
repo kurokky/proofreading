@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8"/>
+	<title>俺俺校正くんα</title>
+	<link rel="icon" href="./kousei.svg" type="image/svg+xml">
+	<script src="./js/kuromoji.js"></script>
+	<script src="./js/main_c.js"></script>
+	<base target="_blank">
+	<style>
+		*{box-sizing:border-box;margin:0}
+		body {
+		font-family:font-family: "Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+		font-size: 1rem;
+		padding:8px;
+		}
+		ul,li{
+			list-style:none;
+			margin:0;
+			padding:0;
+		}
+		header{margin-bottom:8px;}
+		h1{text-align:center;font-size:1.4rem}
+		footer{background:#000;color:#fff;padding:8px}
+		footer a{color:#fff}
+		footer p{text-align:center;}
+		main{display:flex}
+		main div{width:50%;margin:0 4px}
+		div p{text-align:center;color:#f00}
+		textarea{width:100%;height:67vh;padding:16px;font-size:100%;}
+		article{padding:16px;font-size:100%;height:67vh;overflow: auto;border:1px solid #999}
+		.warning{background:skyblue;}
+		.joshi{background:#ffff7e}
+		.triple_dot{background:red}
+		.doubule_joshi{background:#ffe0e0;}
+		.kandoshi{background:#96ffe0;}
+		.iikiri{background:#c1aeff;}
+		.talk{background:#ccc;}
+		button{padding:8px;margin:16px auto 0 auto}
+		section{height:20vh;text-align:center;padding:16px}
+		aside{border:1px solid #000;padding:8px;display:none;margin:8px}
+		.sample{display:inline-block;width:32px;margin-right:8px;font-size:70%;}
+		#detail ul li{display:none}
+	</style>
+</head>
+<body>
+<header>
+	<h1>俺俺校正くんα</h1>
+</header>
+<main>
+	<div>
+	<textarea id="base_text" placeholder="ここに文章を貼り付けてください。（あまり長い文章だと分析に時間がかかるかもしれないので気をつけてください）"></textarea>
+	<section>
+	<p>誤字脱字はチェックしていません。<br>
+	このツールによって文章が壊れても責任は持てません。<br>
+	指摘内容はあくまで「目安」となり<b>必ずしも修正しなければならないものではありません。</b><br>
+	(上記に納得した方のみ文章貼り付け後、下記のcheckボタンを押してください)</p>
+	<button id="check">check</button>
+	</section>
+	</div>
+	<div><article id="response">ここに分析後の文章が表示されます。</article>
+	<aside id="detail">
+		<ul>
+			<li id="triple_dot"><span class="triple_dot sample">&nbsp;</span>連続する句点は…を使ってもよいかもしれません。</li>
+			<li id="warning"><span class="warning sample">&nbsp;</span>近い文節に同じ表現があります。</li>
+			<li id="iikiri"><span class="iikiri sample">&nbsp;</span>括弧の終わりに続いて句読点があります。<a href="https://xn--3kq3hlnz13dlw7bzic.jp/square-bracket/">括弧の扱いは句読点と同じとなるらしいです。</a></li>
+			<li id="kandoshi"><span class="kandoshi sample">&nbsp;</span>同じような<a href="https://ja.wikipedia.org/wiki/%E6%84%9F%E5%8B%95%E8%A9%9E">感動詞</a>が連続している可能性があります。</li>
+			<li id="talk"><span class="talk sample">&nbsp;</span>直前に会話やらしき文章ある可能性がありますが鉤括弧などが使われていません。</li>
+			<li id="doubule_joshi"><span class="doubule_joshi sample">&nbsp;</span><a href="https://ja.wikipedia.org/wiki/%E5%8A%A9%E8%A9%9E">助詞</a>が連続していて冗長な言い回しになっている可能性があります。(<a href="https://ja.wikipedia.org/wiki/%E5%8A%A9%E8%A9%9E">助詞</a>が1つでも大丈夫な可能性があります)</li>
+			<li id="joshi"><span class="joshi sample">&nbsp;</span>近い文節に同じ<a href="https://ja.wikipedia.org/wiki/%E5%8A%A9%E8%A9%9E">助詞</a>が見受けられます。気になる場合は表現を変えましょう。</li>
+	</aside>
+	</div>
+</main>
+<footer><p>Javascriptの<a href="https://github.com/takuyaa/kuromoji.js/">kuromoji</a>を使った形態素解析によるチェックをしています。サーバーにデータは一切送信していませんので安心してお使いください。<br>
+<a href="https://note.com/kurokky">&copy;kurokky</a></p></footer>
+</body>
+</html>
+
